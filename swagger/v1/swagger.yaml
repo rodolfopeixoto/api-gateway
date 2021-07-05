@@ -1,0 +1,156 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/request_controls":
+    post:
+      summary: Create an Request Control
+      tags:
+      - API::V1::ApiProxy::RequestControl
+      parameters: []
+      responses:
+        '201':
+          description: it create request control
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          remote_ip:
+                            type: string
+                          max_request:
+                            type: integer
+                          destination_path:
+                            type: string
+                          email:
+                            type: string
+                          token:
+                            type: string
+                          acceptance_criteria:
+                            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                request_control:
+                  type: object
+                  properties:
+                    remote_ip:
+                      type: string
+                    max_request:
+                      type: integer
+                    destination_path:
+                      type: string
+                    email:
+                      type: string
+                    token:
+                      type: string
+                    acceptance_criteria:
+                      type: string
+        required: true
+  "/api/v1/request_controls/{id}":
+    put:
+      summary: Return the request_controls update
+      tags:
+      - API::V1::ApiProxy::RequestControl
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: retrieve the update request control
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          remote_ip:
+                            type: string
+                          max_request:
+                            type: integer
+                          destination_path:
+                            type: string
+                          email:
+                            type: string
+                          token:
+                            type: string
+                          acceptance_criteria:
+                            type: string
+        '404':
+          description: retrieve the error not found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/errors_raise"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                request_control:
+                  type: object
+                  properties:
+                    remote_ip:
+                      type: string
+                    max_request:
+                      type: integer
+                    destination_path:
+                      type: string
+                    email:
+                      type: string
+                    token:
+                      type: string
+                    acceptance_criteria:
+                      type: string
+        required: true
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
+components:
+  schemas:
+    errors_raise:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            status:
+              type: integer
+            title:
+              type: string
+            detail:
+              type: string
