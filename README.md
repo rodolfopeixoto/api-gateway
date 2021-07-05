@@ -25,13 +25,43 @@ The client makes the request through api.mercadolibre.com for the desired resour
 3. Code on Github
 4. The proxy must exceed 50,0000 requests per second.
 
+## About
+
+The project have a Makefile to learn more about click on the link. [Makefile](https://www.embarcados.com.br/introducao-ao-makefile/)
+
 ## Architecture
 
 
 ## Setup
 
-## Environment dependencies
- 
-  * Ruby 2.7.3
+Execute the command:
 
-## Configuration
+```shell
+  bin/setup
+```
+
+## Environment dependencies
+
+  * Ruby 2.7.3
+  * BUNDLER 2.2.21
+## OpenAPI 3.0 with Documentation
+
+To check the documentation with the apis go to: `http://localhost:3000/api-docs`.
+
+To generation documentation with OpenAPI 3.0 specification use:
+
+```
+  make generate_document_api
+```
+
+or
+
+```
+  bundle exec rails rswag:specs:swaggerize
+```
+
+## Run Tests
+
+```
+  make test
+```
