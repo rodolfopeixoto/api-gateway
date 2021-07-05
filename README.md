@@ -31,6 +31,11 @@ The project have a Makefile to learn more about click on the link. [Makefile](ht
 
 ## Architecture
 
+![Screenshot](architecture.png)
+
+#### Link:
+
+[Draw.io](https://drive.google.com/file/d/1jd8_V3JplLRqmKcjgvszPqJV6E7GL09o/view?usp=sharing)
 
 ## Setup
 
@@ -38,6 +43,12 @@ Execute the command:
 
 ```shell
   bin/setup
+```
+
+Add data for test
+
+```
+  bin/rails db:seed
 ```
 
 ## Environment dependencies
@@ -64,4 +75,39 @@ or
 
 ```
   make test
+```
+
+## How to use
+
+Information about data
+
+```ruby
+    "remote_ip" # The ip of the request
+    "max_request_origin_ip" # Maximum requisition quantity
+    "destination_path"
+    "email"
+    "token"
+    "acceptance_criteria" # Criteria to select which type of criteria will be checked example: "remote_ip,email" or "email"
+    "period_seconds" # Time period for each request in seconds.
+```
+
+This is ApacheBench, about it [Link](http://manpages.ubuntu.com/manpages/bionic/man1/ab.1.html).
+
+Make many requests. Where -n is the number of requests and -c is the number concurrency.
+
+Example:
+
+```shell
+  ab -n 20 -c 2 'http://localhost:3000/api/v1/services2'
+```
+
+```
+       ab [ -A auth-username:password ] [ -b windowsize ] [ -B local-address ] [ -c concurrency ]
+       [ -C cookie-name=value ] [ -d ] [ -e csv-file ] [ -f protocol ] [ -g gnuplot-file ] [ -h ]
+       [  -H  custom-header  ] [ -i ] [ -k ] [ -l ] [ -m HTTP-method ] [ -n requests ] [ -p POST-
+       file ] [ -P proxy-auth-username:password ] [ -q ] [ -r ] [ -s  timeout  ]  [  -S  ]  [  -t
+       timelimit  ]  [  -T  content-type  ]  [  -u  PUT-file ] [ -v verbosity] [ -V ] [ -w ] [ -x
+       <table>-attributes ] [ -X proxy[:port] ] [ -y <tr>-attributes ] [ -z <td>-attributes  ]  [
+       -Z ciphersuite ] [http[s]://]hostname[:port]/path
+
 ```

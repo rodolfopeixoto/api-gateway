@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get '/services1', to: 'photos#show'
+      get '/services2', to: 'photos#show'
       resources :request_controls, only: %i[create update]
     end
   end
