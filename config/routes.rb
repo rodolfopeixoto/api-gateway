@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+
+  namespace :api do
+    namespace :v1 do
+      get '/services1', to: 'photos#show'
+      resources :request_controls, only: [:create]
+    end
+  end
 end
