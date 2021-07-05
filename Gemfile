@@ -9,9 +9,11 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 gem 'awesome_print'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'health_check'
+gem 'jsonapi-serializer'
 gem 'lograge'
 gem 'pg'
 gem 'puma'
+gem 'rack-attack'
 gem 'rack-cors'
 gem 'rswag-api'
 gem 'rswag-ui'
@@ -24,11 +26,14 @@ gem 'rubocop', require: false
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rswag-specs'
 end
 
 group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
   gem 'simplecov', require: false
 end
 

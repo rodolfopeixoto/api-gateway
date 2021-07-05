@@ -1,0 +1,2 @@
+class RequestControl < ApplicationRecord
+end
