@@ -84,7 +84,15 @@ or
   make server
 ```
 
-## How to use
+## Rack modifications
+
+We use the [rack-proxy](https://github.com/ncr/rack-proxy) gem:
+
+In path: `config/initializers/forward_host.rb`
+
+We use the [rack-attack](https://github.com/rack/rack-attack) gem:
+In path: `config/initializers/rack_attack.rb`
+## How to use for limit request
 
 Information about data
 
@@ -97,6 +105,8 @@ Information about data
     "acceptance_criteria" # Criteria to select which type of criteria will be checked example: "remote_ip,email" or "email"
     "period_seconds" # Time period for each request in seconds.
 ```
+
+in [POST] `/api/v1/request_controls`
 
 This is ApacheBench, about it [Link](http://manpages.ubuntu.com/manpages/bionic/man1/ab.1.html).
 
