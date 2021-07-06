@@ -1,4 +1,6 @@
 generate_document_api:
 	bundle exec rails rswag:specs:swaggerize
 test:
-	bundle exec rspec spec
+	dotenv -f .env bundle exec rspec spec
+server:
+	dotenv -f .env bundle exec rails s

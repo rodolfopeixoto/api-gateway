@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 
 module ApiGateway
   class Application < Rails::Application
-    # $count = 0
+    $count = 0
     config.load_defaults 6.1
     config.api_only = true
   end
