@@ -29,6 +29,27 @@ The client makes the request through api.mercadolibre.com for the desired resour
 
 The project have a Makefile to learn more about click on the link. [Makefile](https://www.embarcados.com.br/introducao-ao-makefile/)
 
+## Heroku App
+
+Heroku is PasS.
+
+Link:
+
+```
+  http://api-proxy-meli.herokuapp.com
+
+  http://api-proxy-meli.herokuapp.com/api-docs
+```
+
+Test with curl
+
+```
+curl 'http://api-proxy-meli.herokuapp.com/sites/MLA/listing_types'
+
+# Response
+[{"site_id":"MLA","id":"gold_pro","name":"Premium"},{"site_id":"MLA","id":"gold_premium","name":"Oro Premium"},{"site_id":"MLA","id":"gold_special","name":"Clásica"},{"site_id":"MLA","id":"gold","name":"Oro"},{"site_id":"MLA","id":"silver","name":"Plata"},{"site_id":"MLA","id":"bronze","name":"Bronce"},{"site_id":"MLA","id":"free","name":"Gratuita"}]
+```
+
 ## Architecture
 
 ![Screenshot](architecture.png)
