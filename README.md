@@ -55,6 +55,8 @@ Add data for test
 
   * Ruby 2.7.3
   * BUNDLER 2.2.21
+  * Rack Attack
+  * Rack Proxy
 ## OpenAPI 3.0 with Documentation
 
 To check the documentation with the apis go to: `http://localhost:3000/api-docs`.
@@ -75,6 +77,11 @@ or
 
 ```
   make test
+```
+## Run Server
+
+```
+  make server
 ```
 
 ## How to use
