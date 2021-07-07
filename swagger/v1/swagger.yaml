@@ -64,6 +64,17 @@ paths:
                     acceptance_criteria:
                       type: string
         required: true
+    get:
+      summary: Return list of request controls
+      tags:
+      - API::V1::ApiProxy::RequestControl
+      responses:
+        '200':
+          description: retrieve the request controls
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/request_controls"
   "/api/v1/request_controls/{id}":
     put:
       summary: Return the request_controls update
@@ -135,6 +146,42 @@ paths:
                     acceptance_criteria:
                       type: string
         required: true
+  "/api/v1/amount_of_ips":
+    get:
+      summary: Return list of request controls
+      tags:
+      - API::V1::ApiProxy::RequestInformation
+      responses:
+        '200':
+          description: retrieve the request information
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/amount_of_ips"
+  "/api/v1/amount_of_paths":
+    get:
+      summary: Return list of request controls
+      tags:
+      - API::V1::ApiProxy::RequestInformation
+      responses:
+        '200':
+          description: retrieve the request information
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/amount_of_paths"
+  "/api/v1/amount_of_status":
+    get:
+      summary: Return list of request controls
+      tags:
+      - API::V1::ApiProxy::RequestInformation
+      responses:
+        '200':
+          description: retrieve the request information
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/amount_of_status"
 servers:
 - url: https://{defaultHost}
   variables:
@@ -142,6 +189,72 @@ servers:
       default: www.example.com
 components:
   schemas:
+    request_controls:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              attributes:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  remote_ip:
+                    type: string
+                  max_request_origin_ip:
+                    type: integer
+                  destination_path:
+                    type: string
+                  email:
+                    type: string
+                  token:
+                    type: string
+                  acceptance_criteria:
+                    type: string
+                  period_seconds:
+                    type: string
+    request_informations:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              attributes:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  client_ip:
+                    type: string
+                  path:
+                    type: string
+                  status_code:
+                    type: string
+    amount_of_status:
+      type: object
+      properties:
+        type: integer
+    amount_of_paths:
+      type: object
+      properties:
+        type: integer
+    amount_of_ips:
+      type: object
+      properties:
+        type: integer
     errors_raise:
       type: object
       properties:

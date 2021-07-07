@@ -4,17 +4,17 @@ module Api
 
       def amount_of_status
         amount_status = RequestInformation.amount_of_status(params[:status])
-        render json: { request_information: { amount_of_status: amount_status } }, status: :ok
+        render json: { amount_of_status: amount_status }, status: :ok
       end
 
       def amount_of_paths
         amount_paths = RequestInformation.amount_of_paths(params[:path])
-        render json: { request_information: { amount_of_paths: amount_paths } }, status: :ok
+        render json: { amount_of_paths: amount_paths }, status: :ok
       end
 
       def amount_of_ips
         amount_ips = RequestInformation.amount_of_ips(params[:client_ip])
-        render json: { request_information: { amount_of_ips: amount_ips } }, status: :ok
+        render json: { amount_of_ips: amount_ips }, status: :ok
       end
 
       private
