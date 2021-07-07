@@ -1,11 +1,11 @@
-class RackAttack
+class RateLimit
   def by_email
     limit_proc_email = proc do |request|
       request_control_by_email(request.params['email'])
       @request_control_by_email.present? ? @request_control_by_email.max_request_origin_ip : 0
     end
 
-    Rack::Attack.throttle('limit per email', limit: limit_proc_email, period: 1) do |request|
+    Rack::Attack.throttle('limit per email', limit: limit_proc_email.seconds, period: 1) do |request|
       request.params['email'].to_s.downcase.gsub(/\s+/, '') if @request_control_by_email.present?
     end
   end
@@ -16,7 +16,7 @@ class RackAttack
       @request_control_by_path.present? ? @request_control_by_path.max_request_origin_ip : 0
     end
 
-    Rack::Attack.throttle('limit path per ip', limit: limit_proc, period: 1) do |request|
+    Rack::Attack.throttle('limit path per ip', limit: limit_proc.seconds, period: 1) do |request|
       request.path if @request_control_by_path.present?
     end
   end
@@ -28,7 +28,7 @@ class RackAttack
       @request_control_by_ip.present? ? request_control_by_ip.max_request_origin_ip : 0
     end
 
-    Rack::Attack.throttle('limit per ip', limit: limit_proc_ip, period: 1) do |request|
+    Rack::Attack.throttle('limit per ip', limit: limit_proc_ip.seconds, period: 1) do |request|
       request.ip if @request_control_by_ip.present?
     end
   end
@@ -47,7 +47,7 @@ class RackAttack
 end
 
 
-rate_limit = RackAttack.new
+rate_limit = RateLimit.new
 rate_limit.by_email
 rate_limit.by_path
 rate_limit.by_ip

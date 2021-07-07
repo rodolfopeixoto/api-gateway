@@ -1,6 +1,6 @@
 class ForwardHost < Rack::Proxy
 
-  PATHS_NOT_FORWARD_HOST = %r{/request_controls|/api-docs|/amount_of_status|/amount_of_paths|/amount_of_ips}
+  PATHS_NOT_FORWARD_HOST = %r{/api/v1|/api-docs}.freeze
 
   def perform_request(env)
     @rack_request = Rack::Request.new(env)
@@ -29,4 +29,5 @@ class ForwardHost < Rack::Proxy
   attr_reader :rack_request, :backend
 end
 
+Rails.application.config.middleware.use Rack::Attack
 Rails.application.config.middleware.use ForwardHost, backend: ENV['SERVICE_URL'], streaming: false

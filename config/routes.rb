@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'amount_of_status', to: 'request_informations#amount_of_status'
       get 'amount_of_paths', to: 'request_informations#amount_of_paths'
       get 'amount_of_ips', to: 'request_informations#amount_of_ips'
+      get 'amount_of_many_requests', to: 'request_informations#amount_of_many_requests'
     end
   end
 end
