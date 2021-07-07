@@ -50,6 +50,27 @@ curl 'http://api-proxy-meli.herokuapp.com/sites/MLA/listing_types'
 [{"site_id":"MLA","id":"gold_pro","name":"Premium"},{"site_id":"MLA","id":"gold_premium","name":"Oro Premium"},{"site_id":"MLA","id":"gold_special","name":"Clásica"},{"site_id":"MLA","id":"gold","name":"Oro"},{"site_id":"MLA","id":"silver","name":"Plata"},{"site_id":"MLA","id":"bronze","name":"Bronce"},{"site_id":"MLA","id":"free","name":"Gratuita"}]
 ```
 
+*Statistics*
+
+by status code
+
+```
+curl --request GET -d '{ "status": "200" }' -H "Content-Type: application/json" 'http://localhost:3000/api/v1/amount_of_status'
+```
+
+by ip
+
+```
+curl --request GET -d '{ "client_ip": "::1" }' -H "Content-Type: application/json" 'http://localhost:3000/api/v1/amount_of_ips'
+```
+
+
+by path
+
+```
+curl --request GET -d '{ "path": "/api/v1/amount_of_ips" }' -H "Content-Type: application/json" 'http://localhost:3000/api/v1/amount_of_paths'
+```
+
 ## Architecture
 
 ![Screenshot](architecture.png)

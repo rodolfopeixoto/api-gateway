@@ -34,6 +34,58 @@ RSpec.configure do |config|
       ],
       components: {
         schemas: {
+          request_controls: {
+            type: :object,
+            properties: {
+              data: {
+                type: :array,
+                items: {
+                  type: :object,
+                  properties: {
+                    id: { type: :string },
+                    type: { type: :string },
+                    attributes: {
+                      type: :object,
+                      properties: {
+                        id: { type: :string },
+                        remote_ip: { type: :string },
+                        max_request_origin_ip: { type: :integer },
+                        destination_path: { type: :string },
+                        email: { type: :string },
+                        token: { type: :string },
+                        acceptance_criteria: { type: :string },
+                        period_seconds: { type: :string }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          request_informations: {
+            type: :object,
+            properties: {
+              data: {
+                type: :array,
+                items: {
+                  type: :object,
+                  properties: {
+                    id: { type: :string },
+                    type: { type: :string },
+                    attributes: {
+                      type: :object,
+                      properties: {
+                        id: { type: :string },
+                        client_ip: { type: :string },
+                        path: { type: :string },
+                        status_code: { type: :string }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
           errors_raise: {
             type: :object,
             properties: {
