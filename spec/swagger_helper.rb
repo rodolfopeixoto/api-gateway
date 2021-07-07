@@ -86,6 +86,18 @@ RSpec.configure do |config|
               }
             }
           },
+          amount_of_status: {
+            type: :object,
+            properties: { type: :integer },
+          },
+          amount_of_paths: {
+            type: :object,
+            properties: { type: :integer },
+          },
+          amount_of_ips: {
+            type: :object,
+            properties: { type: :integer },
+          },
           errors_raise: {
             type: :object,
             properties: {
