@@ -17,7 +17,7 @@ describe 'Create Request Control' do
                       type: :object,
                       properties: {
                         remote_ip: { type: :string },
-                        max_request: { type: :integer },
+                        max_request_origin_ip: { type: :integer },
                         destination_path: { type: :string },
                         email: { type: :string },
                         token: { type: :string },
@@ -39,7 +39,7 @@ describe 'Create Request Control' do
                        properties: {
                          id: { type: :string },
                         remote_ip: { type: :string },
-                        max_request: { type: :integer },
+                        max_request_origin_ip: { type: :integer },
                         destination_path: { type: :string },
                         email: { type: :string },
                         token: { type: :string },

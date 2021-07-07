@@ -24,10 +24,10 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'http://{defaultHost}',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: 'localhost:3000'
             }
           }
         }
@@ -95,6 +95,10 @@ RSpec.configure do |config|
             properties: { type: :integer },
           },
           amount_of_ips: {
+            type: :object,
+            properties: { type: :integer },
+          },
+          amount_of_many_requests: {
             type: :object,
             properties: { type: :integer },
           },

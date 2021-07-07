@@ -17,6 +17,11 @@ module Api
         render json: { amount_of_ips: amount_ips }, status: :ok
       end
 
+      def amount_of_many_requests
+        amount_many_requests = RequestInformation.amount_of_many_requests
+        render json: { amount_of_many_requests: amount_many_requests }, status: :ok
+      end
+
       private
 
       def request_information_params
