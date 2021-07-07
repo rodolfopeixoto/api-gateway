@@ -4,6 +4,11 @@ module Api
 
       before_action :set_request_control, only: %i[update]
 
+      def index
+        request_controls = RequestControl.all
+        render json: RequestControlSerializer.new(request_controls), status: :ok
+      end
+
       def create
         request_control = RequestControl.create!(request_control_params)
         render json: RequestControlSerializer.new(request_control), status: :created

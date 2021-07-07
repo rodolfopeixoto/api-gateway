@@ -1,7 +1,10 @@
 class ForwardHost < Rack::Proxy
+
+  PATHS_NOT_FORWARD_HOST = %r{/request_controls|/api-docs|/amount_of_status|/amount_of_paths|/amount_of_ips}
+
   def perform_request(env)
-    request = Rack::Request.new(env)
-    if request.path =~ %r{/api/v1/request_controls|/api-docs}
+    @rack_request = Rack::Request.new(env)
+    if @rack_request.path =~ PATHS_NOT_FORWARD_HOST
       @backend = URI(ENV['URL_PROJECT'])
       @app.call(env)
     else
@@ -10,6 +13,20 @@ class ForwardHost < Rack::Proxy
       super(env)
     end
   end
+
+  def rewrite_response(triplet)
+    status, _headers, _body = triplet
+    RequestInformation.create(
+      client_ip: @rack_request.ip,
+      path: @rack_request.path,
+      status_code: status
+    )
+    triplet
+  end
+
+  private
+
+  attr_reader :rack_request, :backend
 end
 
 Rails.application.config.middleware.use ForwardHost, backend: ENV['SERVICE_URL'], streaming: false
