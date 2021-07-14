@@ -1,6 +1,5 @@
 module Proxy
   class ForwardHost < Rack::Proxy
-
     PATHS_NOT_FORWARD_HOST = %r{/api/v1|/api-docs}.freeze
 
     def perform_request(env)
